@@ -53,6 +53,12 @@ function highestProductOf3(arrayOfInts) {
   return highestProductOf3;
 }
 
+/*
+Complexity
+time: O(n)
+space: O(1)
+*/
+
 // test case
 const array1 = [1, 3, 4, 2, 5];
 console.log(highestProductOf3(array1));
