@@ -24,6 +24,60 @@ function kthToLastNode(k, headNode) {
   }
 }
 
+// time complexity linear time
+// space complexity linear time
+
+// solution 2
+function kthToLastNode(k, head) {
+  let listLength = 1;
+  let currentNode = head;
+
+  while (currentNode.next) {
+    currentNode = currentNode.next;
+    listLength += 1;
+  }
+
+  const howFarToGo = listLength - k;
+
+  currentNode = head;
+  for (let i = 0; i < howFarToGo; i++) {
+    currentNode = currentNode.next;
+  }
+
+  return currentNode;
+}
+
+// time complexity is linear
+// space complexity is constant space
+
+// solution 3
+function kthToLastNode(k, head) {
+  if (k < 1) {
+    throw new Error("error k has to be greater than 1");
+  }
+
+  let leftNode = head;
+  let rightNode = head;
+
+  for (let i = 0; i < k - 1; i++) {
+    if (!rightNode.next) {
+      throw new Error("k is larger than the length of the list");
+    }
+
+    rightNode = rightNode.next;
+  }
+
+  while (rightNode.next) {
+    leftNode = leftNode.next;
+    rightNode = rightNode.next;
+  }
+
+  return leftNode;
+}
+
+// time complexity is linear
+// space complexity is constant
+
 class LinkedListNode {
   constructor(value) {
     this.value = value;
